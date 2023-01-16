@@ -1,0 +1,11 @@
+import pandas as pd 
+data = pd.read_csv("multidata.csv") 
+data.shape 
+features = data.iloc[:,0 : 4].values 
+labels = data.iloc[:,-1].values 
+from sklearn.linear_model import LinearRegression 
+reg = LinearRegression() 
+reg.fit(features,labels) 
+print(reg.coef_) 
+#values show changes in value of X5 when values of X1, X2, X3 and X4 
+are changed respectivly 
