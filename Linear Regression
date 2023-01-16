@@ -1,0 +1,16 @@
+import pandas as pd 
+data = pd.read_csv("Lineardata.csv") 
+data.shape #prints (rows,columns) 
+features = data.iloc[:,0].values #takes X as features 
+labels = data.iloc[:,-1].values #takes Y as labels 
+r_features = features.reshape(63,1) #reshape so fits in model 
+r_lables = labels.reshape(63,1) 
+from sklearn.linear_model import LinearRegression 
+reg = LinearRegression() 
+reg.fit(r_features,r_lables) #fitting the data 
+reg.predict([[109]]) 
+#for final plotting 
+import matplotlib.pyplot as plt 
+plt.scatter(r_features,r_lables) 
+plt.scatter(r_features, r_lables) 
+plt.plot(features,reg.predict(r_features))
